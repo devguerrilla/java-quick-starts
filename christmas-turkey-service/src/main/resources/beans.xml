@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:jaxrs="http://cxf.apache.org/jaxrs" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<!-- Create a Jettison based JSON provider -->
+    <bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider"/>
+    
+    <!-- Configure an exception mapper for our application level "not found" error -->
+    <bean id="animalNotFoundExceptionProvider" class="com.devguerrilla.quickstarts.java.turkeyservice.AnimalNotFoundExceptionMapper"/>
+
+	<!-- Create a bean for our underlying service -->
+	<bean id="cookingTimeService" class="com.devguerrilla.quickstarts.java.turkeyservice.CookingTimeServiceImpl"/>
+	
+	<!--  Tie everything together in a JAX-RS server -->
+	<jaxrs:server id="cookingTimeServer" address="/">
+		<jaxrs:serviceBeans>
+			<ref bean="cookingTimeService"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jsonProvider"/>
+			<ref bean="animalNotFoundExceptionProvider"/>
+		</jaxrs:providers>
+	</jaxrs:server>                        
+</beans>

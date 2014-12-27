@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	   xmlns:context="http://www.springframework.org/schema/context"  	   
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+           
+    <!-- Configure property overrides
+         Setting our server address to 0.0.0.0:0 will start it on any free port on the local server 
+     -->
+	<bean id="testProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="cookingTimeServer.address">http://0.0.0.0:0/</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Import our production service beans -->
+    <import resource="classpath:beans.xml"/>
+	
+	<!-- Apply the test property overrides -->
+    <context:property-override properties-ref="testProps"/>
+    
+</beans>

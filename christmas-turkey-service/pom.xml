@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.devguerrilla.quickstart.java</groupId>
+		<artifactId>java-quickstarts-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>christmas-turkey-service</artifactId>
+	<packaging>war</packaging>
+	<name>christmas-turkey-service</name>
+	<url>http://www.devguerrilla.com/notes/2014/12/java-quick-starts-jax-rs-restful-services-with-cxf-and-tomcat/</url>
+	<description>Simple example of a read-only JAX-RS service implemented with CXF</description>
+
+	<dependencies>
+		<!-- Core build -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-providers</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>${jettison.version}</version>
+		</dependency>
+		
+		<!-- Unit tests -->
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>${junit.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>			
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.codehaus.groovy.modules.http-builder</groupId>
+		    <artifactId>http-builder</artifactId>
+		    <version>${groovy.httpbuilder.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+   			<groupId>org.spockframework</groupId>
+    		<artifactId>spock-maven</artifactId>
+    		<version>${spock.version}</version>	
+    		<scope>test</scope>
+		   	<exclusions>
+		        <exclusion>  
+		            <groupId>org.apache.maven.surefire</groupId>
+		            <artifactId>surefire-junit47</artifactId>
+		        </exclusion>
+		    </exclusions>    		
+		</dependency>		
+	</dependencies>
+	
+</project>
