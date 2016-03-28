@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+				  xmlns:tns="http://services.devguerrilla.com/hitman-service"
+				  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+				  xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+				  name="hitmanService" 
+				  targetNamespace="http://services.devguerrilla.com/hitman-service">
+	<wsdl:types>
+		<xsd:schema xmlns:tns="http://services.devguerrilla.com/hitman-service"
+					elementFormDefault="unqualified" 
+					targetNamespace="http://services.devguerrilla.com/hitman-service"
+					version="1.0">
+			<xsd:include schemaLocation="hitmanService.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="requestAQuoteResponse">
+		<wsdl:part element="tns:requestAQuoteResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="requestAQuote">
+		<wsdl:part element="tns:requestAQuote" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="HitmanService">
+		<wsdl:operation name="requestAQuote">
+			<wsdl:input message="tns:requestAQuote" name="requestAQuote">
+			</wsdl:input>
+			<wsdl:output message="tns:requestAQuoteResponse" name="requestAQuoteResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="hitmanServiceSoapBinding" type="tns:HitmanService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="requestAQuote">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="requestAQuote">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="requestAQuoteResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="hitmanService">
+		<wsdl:port binding="tns:hitmanServiceSoapBinding" name="hitmanServicePort">
+			<soap:address location="http://localhost:9001/hitmanService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

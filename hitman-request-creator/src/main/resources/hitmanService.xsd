@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:tns="http://services.devguerrilla.com/hitman-service"
+		   elementFormDefault="unqualified" targetNamespace="http://services.devguerrilla.com/hitman-service"
+		   version="1.0">
+
+	<xs:element name="hitDetails" type="tns:hitDetails"/>
+	<xs:element name="requestAQuote" type="tns:requestAQuote"/>
+	<xs:element name="requestAQuoteResponse" type="tns:requestAQuoteResponse"/>
+
+	<xs:complexType name="requestAQuote">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="hitDetails" type="tns:hitDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="hitDetails">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="hitType" type="tns:hitType"/>
+			<xs:element minOccurs="0" name="victimHeight">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" name="victimName" type="xs:string"/>
+			<xs:element minOccurs="0" name="victimWeight">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="requestAQuoteResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:double"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="hitType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DRIVE_BY"/>
+			<xs:enumeration value="DROWNING"/>
+			<xs:enumeration value="POISONING"/>
+			<xs:enumeration	value="APPARENT_AUTOEROTIC_ASPHYXIATION_IN_WOMENS_UNDERWEAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

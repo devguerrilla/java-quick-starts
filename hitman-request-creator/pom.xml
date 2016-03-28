@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.devguerrilla.quickstart.java</groupId>
+		<artifactId>java-quickstarts-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>hitman-request-creator</artifactId>
+	<packaging>jar</packaging>
+	<name>hitman-request-creator</name>
+	<url>TODO</url>
+	<description>Simple example of using SAAJ, JAXP and JAXB to create a valid SOAP request as a string</description>
+
+	<dependencies>
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>${junit.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.unitils</groupId>
+    		<artifactId>unitils-core</artifactId>
+    		<version>${unitils.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+   			<groupId>org.spockframework</groupId>
+    		<artifactId>spock-maven</artifactId>
+    		<version>${spock.version}</version>	
+    		<scope>test</scope>
+		   	<exclusions>
+		        <exclusion>  
+		            <groupId>org.apache.maven.surefire</groupId>
+		            <artifactId>surefire-junit47</artifactId>
+		        </exclusion>
+		    </exclusions>    		
+		</dependency>		
+	</dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>${plugin.jaxb2.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>	
+	
+</project>
