@@ -13,7 +13,7 @@
 	<artifactId>hitman-request-creator</artifactId>
 	<packaging>jar</packaging>
 	<name>hitman-request-creator</name>
-	<url>TODO</url>
+	<url>http://www.devguerrilla.com/notes/2016/03/java-for-the-architecturally-challenged-creating-a-valid-soap-request-as-a-string</url>
 	<description>Simple example of using SAAJ, JAXP and JAXB to create a valid SOAP request as a string</description>
 
 	<dependencies>
